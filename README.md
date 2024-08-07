@@ -20,7 +20,7 @@ MiDas라고 하는 ai기반의 모델을 사용해서 깊이 이미지를 추정
 
 ![카메라](https://github.com/user-attachments/assets/5f7e87ce-90c1-4ccc-9919-559c3ad3fd95)
 
-다이소 카메라 두 대를 연결하였다. 참으로 허접하기 짝이 없다.
+다이소 카메라를 하나 더 구입한 후 서로 연결하였다. 참으로 허접하기 짝이 없다.
 
 ![Honeycam 2024-07-23 09-19-23](https://github.com/user-attachments/assets/d305e368-e9d1-4aec-b924-bd2049016d0d)
 
