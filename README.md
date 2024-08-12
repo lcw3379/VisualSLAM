@@ -43,11 +43,11 @@ OpenCV 공식 홈페이지도 도움이 되었다. https://docs.opencv.org/3.4/d
 ![stereo2](https://github.com/user-attachments/assets/b33b5455-d613-43a7-b009-d7495fc93d8d)![stereo3](https://github.com/user-attachments/assets/c30f0a19-ab79-47e2-94e1-6603c15a84de)
 
 
-빨간 삼각형과 파란 삼각형의 닮음비를 이용해서, 카메라로부터 P까지의 깊이를 알아낼 수 있다. 스테레오 카메라는 이렇게 추정한 깊이를 토대로 Disparity Map을 만든다.
+빨간 삼각형과 파란 삼각형의 닮음비를 이용해서, 카메라로부터 P까지의 깊이를 알아낼 수 있다. 
 
 ![stereo4](https://github.com/user-attachments/assets/d7c46963-5f77-4ad7-bc8c-417ae53708b1)
 
-생성된 Disparity Map으로 Depth Map을 생성한다. 여기엔 스테레오 카메라의 정확한 보정이 필요하다고 한다. 
+스테레오 카메라는 먼저 두 이미지 간의 픽셀 차이를 통해서 Disparity Map을 만들고, Disparity Map과 위쪽 이론의 깊이 추정을 토대로 Depth Map을 만든다. 여기엔 스테레오 카메라의 정확한 보정이 필요하다고 한다. 
 
 
 # 3. Stereo Camera 제작
