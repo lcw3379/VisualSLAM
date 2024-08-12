@@ -8,11 +8,15 @@ MiDas라고 하는 ai기반의 모델을 사용해서 깊이 이미지를 추정
 
 ![002](https://github.com/user-attachments/assets/0e19d812-be6e-4778-9257-b1a62d443ad2)
 
+MiDas를 이용하여 Depth Map을 생성하였다.
+
 ![point1](https://github.com/user-attachments/assets/75b24b24-a844-4042-9dfb-94229aad4b65)
 
 ![point2](https://github.com/user-attachments/assets/82e2665a-be75-4861-8e17-5a3664dbb9ff)
 
-point cloud를 간단히 만들어보고 실시간으로 Visual SLAM 을 해야 하니 RTabMap에서 실행시켜 보았다.
+point cloud까지 생성해 본 모습이다. 3D Reconstruction 예제로 나온 다른 데이터셋에서는 Point Cloud가 정확하게 생성되었는데, AI 기반 Depth Map으로 생성을 하니 중앙 부분은 볼만하게 나오지만 이미지의 끝으로 갈수록 Point Cloud 생성이 불안한 모습을 볼 수 있었다.
+
+일단 이 모델을 사용하여 실시간 SLAM을 해야 하므로 rtab_map에서 실행해 보았다.
 
 ![single_rtab](https://github.com/user-attachments/assets/d506094c-c26b-45f5-9f63-6f91a7b45910)
 
@@ -43,7 +47,7 @@ OpenCV 공식 홈페이지도 도움이 되었다. https://docs.opencv.org/3.4/d
 
 ![stereo4](https://github.com/user-attachments/assets/d7c46963-5f77-4ad7-bc8c-417ae53708b1)
 
-그 후 Depth Map을 생성한다. 여기엔 스테레오 카메라의 정확한 보정이 필요하다고 한다. 
+생성된 Disparity Map으로 Depth Map을 생성한다. 여기엔 스테레오 카메라의 정확한 보정이 필요하다고 한다. 
 
 ![카메라](https://github.com/user-attachments/assets/5f7e87ce-90c1-4ccc-9919-559c3ad3fd95)
 
@@ -60,12 +64,12 @@ OpenCV 공식 홈페이지도 도움이 되었다. https://docs.opencv.org/3.4/d
 
 스테레오 카메라 보정을 하여 각 카메라의 camera matrix, distortion, r, p를 얻고, 이렇게 얻은 파라미터로 양쪽 이미지를 rectify하여 ros로 퍼블리싱한다. 또한 카메라 파라미터 정보 또한 CameraInfo 타입으로 퍼블리싱한다. 그 후 rtab-map을 스테레오 모드로 실행한다. 
 
-책장처럼 밀도있고 복잡한 부분은 특징점을 잘 찾지만, 벽, 냉장고 등 밀도가 낮고 평평한 부분은 특징점을 찾지 못하는 단점이 있다. 사용한 카메라의 시야각이 매우 좁은 것 같아 조금만 더 좋은 카메라를 사용하면 더 좋은 SLAM이 가능해 보인다.
+책장처럼 밀도있고 복잡한 부분은 특징점을 잘 찾지만, 벽, 냉장고 등 밀도가 낮고 평평한 부분은 특징점을 찾지 못하는 단점이 있다. 사용한 카메라의 시야각이 매우 좁은 것 같아 더 좋은 카메라를 사용해야 더 좋은 SLAM이 가능해 보인다는 점이 조금은 아쉬웠다.
 
 가장 중요한 부분이라고 생각한 것은 스테레오 카메라 보정이다. MATLAB, OPENCV, ROS패키지를 사용해서 해 보았는데 ROS패키지가 이미지를 일일이 저장할 필요가 없어 가장 편하다고 생각했다. 또한 구석에서 체커보드를 인식할수록 좋은 보정 데이터를 얻을 수 있다고 한다.
 
 그리고 ros2 내부 프레임들간의 정확한 tranform을 해야 slam이 가능하다는 것이다. 각 토픽 프레임들간의 정확한 연결 없이는 불가능했다.
 
-솔직히 나도 잘 될지는 몰랐지만, 제작비 12000원의 스테레오 카메라로서는 생각보다 좋은 성능을 보여준 것 같았다. 
+
 
 훗날 자금에 여유가 생긴다면 rgbd 카메라를 이용한 3d reconstruction 또한 해보고 싶다. rtabmap 에서 visual odometry에 쓰인 이미지들을 묶어서 저장해 데이터셋을 만들 수 있게 해 주니 depth map과 같이 저장해서 colmap등의 프로그램으로 3d reconstruction을 하면 될 것이다.
