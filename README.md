@@ -3,7 +3,7 @@
 
 그 결과로 다이소에서 5,000원이면 살 수 있는, 매우 저렴한 카메라로 visual slam을 하려 한 경험을 정리하였다. 
 
-# 1. ai기반 depth estimation model 사용
+# 1. AI기반 depth estimation model 사용
 MiDas라고 하는 ai기반의 모델을 사용해서 깊이 이미지를 추정하고 테스트로 point cloud를 생성해 보았다.
 
 ![002](https://github.com/user-attachments/assets/0e19d812-be6e-4778-9257-b1a62d443ad2)
@@ -31,7 +31,7 @@ point cloud까지 생성해 본 모습이다. 3D Reconstruction 예제로 나온
 그래서 일단 ai모델에 기반한 방법은 보류하기로 했다. 훗날 3D Reconstruction에 사용할 수도 있겠지만 지금은 Visual SLAM을 목표로 하기 때문에 다른 방법을 찾았다.
 
 
-# 2. stereo camera 제작
+# 2. Stereo Vision
 이론적 배경은 해당 pdf를 참고했다. http://www.cs.toronto.edu/~fidler/slides/2015/CSC420/lecture12_hres.pdf
 
 OpenCV 공식 홈페이지도 도움이 되었다. https://docs.opencv.org/3.4/dd/d53/tutorial_py_depthmap.html
@@ -48,6 +48,9 @@ OpenCV 공식 홈페이지도 도움이 되었다. https://docs.opencv.org/3.4/d
 ![stereo4](https://github.com/user-attachments/assets/d7c46963-5f77-4ad7-bc8c-417ae53708b1)
 
 생성된 Disparity Map으로 Depth Map을 생성한다. 여기엔 스테레오 카메라의 정확한 보정이 필요하다고 한다. 
+
+
+# 3. Stereo Camera 제작
 
 ![카메라](https://github.com/user-attachments/assets/5f7e87ce-90c1-4ccc-9919-559c3ad3fd95)
 
