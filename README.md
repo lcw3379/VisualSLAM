@@ -51,6 +51,13 @@ OpenCV 공식 홈페이지도 도움이 되었다. https://docs.opencv.org/3.4/d
 
 ![Honeycam 2024-07-23 09-19-23](https://github.com/user-attachments/assets/d305e368-e9d1-4aec-b924-bd2049016d0d)
 
+실행과정은 다음과 같다.
+
+  1. ros2 launch mycam stp_stereo.launch.py
+  2. ros2 run mycam camerapub
+  3. ros2 launch rtabmap_launch rtabmap.launch.py stereo:=true queue_size:=30 frame_id:=base_link approx_sync:=true
+
+
 스테레오 카메라 보정을 하여 각 카메라의 camera matrix, distortion, r, p를 얻고, 이렇게 얻은 파라미터로 양쪽 이미지를 rectify하여 ros로 퍼블리싱한다. 또한 카메라 파라미터 정보 또한 CameraInfo 타입으로 퍼블리싱한다. 그 후 rtab-map을 스테레오 모드로 실행한다. 
 
 책장처럼 밀도있고 복잡한 부분은 특징점을 잘 찾지만, 벽, 냉장고 등 밀도가 낮고 평평한 부분은 특징점을 찾지 못하는 단점이 있다. 사용한 카메라의 시야각이 매우 좁은 것 같아 조금만 더 좋은 카메라를 사용하면 더 좋은 SLAM이 가능해 보인다.
