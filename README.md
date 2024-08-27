@@ -75,7 +75,8 @@ OpenCV 공식 홈페이지도 도움이 되었다. https://docs.opencv.org/3.4/d
 
 
 그럼에도 불구하고, 카메라의 성능이나 여타 다른 문제 때문인지, 3D Map 생성이 카메라에서 발산하는 형태로 만들어진다.
+
 ![Screenshot from 2024-08-27 16-35-05](https://github.com/user-attachments/assets/13315034-7a0b-4149-99fb-9f2735b17fdd)
 
 
-결국 저렴한 가격의 카메라로 제작한 stereo camera는 visual odometry만 대략적으로 되는 것처럼 보이고, 실제로 정확한 3D MAP 생성을 위해선 Depth Sensor를 가진 카메라가 필수로 보인다. Rtab-map의 사용법을 공부한 것을 의의로 두어야 겠다.
+결국 저렴한 가격의 카메라로 제작한 stereo camera는 visual odometry만 대략적으로 되는 것처럼 보이고, 실제로 정확한 3D MAP 생성을 위해선 Depth Sensor를 가진 카메라가 필수로 보인다. Rtab-map의 사용법을 공부한 걸 의의로 두어야 겠다.
