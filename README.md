@@ -74,5 +74,8 @@ OpenCV 공식 홈페이지도 도움이 되었다. https://docs.opencv.org/3.4/d
 그리고 ros2 내부 프레임들간의 정확한 tranform을 해야 slam이 가능하다는 것이다. 각 토픽 프레임들간의 정확한 연결 없이는 불가능했다.
 
 
+그럼에도 불구하고, 카메라의 성능이나 여타 다른 문제 때문인지, 3D Map 생성이 카메라에서 발산하는 형태로 만들어진다.
+![Screenshot from 2024-08-27 16-35-05](https://github.com/user-attachments/assets/13315034-7a0b-4149-99fb-9f2735b17fdd)
 
-훗날 자금에 여유가 생긴다면 rgbd 카메라를 이용한 3d reconstruction 또한 해보고 싶다. rtabmap 에서 visual odometry에 쓰인 이미지들을 묶어서 저장해 데이터셋을 만들 수 있게 해 주니 depth map과 같이 저장해서 colmap등의 프로그램으로 3d reconstruction을 하면 될 것이다.
+
+결국 저렴한 가격의 카메라로 제작한 stereo camera는 visual odometry만 대략적으로 되는 것처럼 보이고, 실제로 정확한 3D MAP 생성을 위해선 Depth Sensor를 가진 카메라가 필수로 보인다. Rtab-map의 사용법을 공부한 것을 의의로 두어야 겠다.
